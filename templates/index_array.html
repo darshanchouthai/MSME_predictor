@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MSME Survival Predictor</title>
+</head>
+<body>
+    <h2>Enter 64 financial values as a comma-separated array:</h2>
+    <form method="POST" action="/predict">
+        <textarea name="input_array" rows="8" cols="100" placeholder="Enter values like: 0.1, -0.2, 0.3, ..., 0.05"></textarea><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

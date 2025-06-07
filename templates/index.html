@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MSME Survival Predictor</title>
+</head>
+<body>
+    <h1>🔍 MSME Survival Prediction</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <label>Upload CSV File (min. 6 rows):</label><br>
+        <input type="file" name="file" accept=".csv" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+        <h2>{{ prediction }}</h2>
+    {% endif %}
+
+    {% if recommendations %}
+        <h3>💡 Recommendations:</h3>
+        {% for rec in recommendations %}
+            <h4>Row {{ rec.row }}</h4>
+            <ul>
+                {% for issue in rec.issues %}
+                    <li>{{ issue.suggestion }} (Value: {{ issue.value }})</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
